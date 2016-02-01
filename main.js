@@ -1,9 +1,7 @@
-// var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', []);
 
-// myApp.controller('myController', ['$scope', function($scope){
+myApp.controller('myController', ['$scope', function ($scope){
 
-
-// }])
 
 var foodItem = function(name, calories, vegan, glutenFree, citrusFree){
 
@@ -12,8 +10,6 @@ var foodItem = function(name, calories, vegan, glutenFree, citrusFree){
 		this.vegan = vegan;
 		this.glutenFree = glutenFree;
 		this.citrusFree = citrusFree;
-
-}
 
 var tomatoes = new foodItem (
 
@@ -69,10 +65,10 @@ var Plate = function(name, description, number, ingredients, isVegan){
 	}
 
 
-var Burrito = new Plate(
+$scope.Burrito = new Plate(
 
 	'Burrito Plate',
-	'Big jug od Burrito Plate',
+	'Big jug of Burrito Plate',
 	9,
 	[tomatoes, horseradish]
 	)
@@ -162,10 +158,14 @@ var Customer = function(dietaryPreference){
 
 	Restaurant.prototype.stringify = function(){
 
-		console.log(this.name + this.description + this.menu.join();
+		console.log(this.name + this.description + this.menu.join());
 	}
 
 	Customer.prototype.stringify = function(){
 
 		console.log(this.dietaryPreference);
 	}
+
+
+
+}])

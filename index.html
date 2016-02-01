@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<title>Restaurant Objects</title>
 	<link rel="stylesheet" type"text/css" href="main.css">
@@ -7,11 +7,14 @@
 
 
 </head>
-<body>
+<body ng-controller="myController">
 	<div>
 		<img class="background-picture" src="restaurant2.jpg">
 		<div class="menu-container">
-		Menu and restaurant info
+			<div class="menu">
+				<H3>OG's Taco Shop</H3>
+				<p>{{Burrito}}</p>
+			</div>
 		</div>
 	</div>
 
