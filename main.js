@@ -3,6 +3,9 @@ var myApp = angular.module('myApp', []);
 myApp.controller('myController', ['$scope', function ($scope){
 
 
+$scope.greeting = "bbbbb";
+console.log(greeting);
+
 var foodItem = function(name, calories, vegan, glutenFree, citrusFree){
 
 		this.name = name;
@@ -10,8 +13,9 @@ var foodItem = function(name, calories, vegan, glutenFree, citrusFree){
 		this.vegan = vegan;
 		this.glutenFree = glutenFree;
 		this.citrusFree = citrusFree;
+	}
 
-var tomatoes = new foodItem (
+$scope.tomatoes = new foodItem (
 
 		'Tomato',
 		100,
@@ -20,7 +24,7 @@ var tomatoes = new foodItem (
 		true
 	);
 
-var horseradish = new foodItem (
+$scope.horseradish = new foodItem (
 
 		'Horseradish',
 		20,
@@ -29,7 +33,7 @@ var horseradish = new foodItem (
 		true
 	);
 
-var orange = new foodItem (
+$scope.orange = new foodItem (
 
 		'Orange',
 		25,
@@ -47,12 +51,12 @@ var Drink = function(name, description, number, ingredients){
 	this.ingredients = ingredients;
 }
 
-var bloodyMary = new Drink (
+$scope.bloodyMary = new Drink (
 
 	"Bloody Mary",
 	" Big jug of bloody mary. ",
 	10,
-	[orange.name, horseradish.name, tomatoes.name]
+	[$scope.orange.name, $scope.horseradish.name, $scope.tomatoes.name]
 
 	);
 
@@ -67,10 +71,17 @@ var Plate = function(name, description, number, ingredients, isVegan){
 
 $scope.Burrito = new Plate(
 
-	'Burrito Plate',
+	'Burrito',
 	'Big jug of Burrito Plate',
 	9,
-	[tomatoes, horseradish]
+	[$scope.tomatoes, $scope.horseradish]
+	)
+
+$scope.Taco = new Plate(
+	'Tacos',
+	'Two Tacos',
+	8,
+	[$scope.tomatoes]
 	)
 
 var Order = function(plates){
@@ -82,7 +93,7 @@ var Menu = function(plates){
 }
 
 var newMenu = new Menu (
-	[Burrito, bloodyMary]
+	[$scope.Burrito, $scope.bloodyMary]
 	)
 
 var Restaurant = function(name, description, menu){
