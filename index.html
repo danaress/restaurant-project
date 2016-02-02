@@ -17,7 +17,22 @@
 		<div class="menu-container">
 			<div class="menu">
 				<H3>OG's Taco Shop</H3>
-				<p>{{greeting}}</p>
+				<div class="left-column">
+					<h4 class="item-name">{{Burrito.name}}</h4>
+					<ul class="list">
+						<li>{{Burrito.description}}</li>
+						<li>${{Burrito.number}}</li>
+						<li>{{Burrito.ingredients.join(',  ')}}</li>
+					</ul>
+				</div>
+				<div class="right-column">
+					<h4 class="item-name">{{Taco.name}}</h4>
+					<ul class="list">
+						<li>{{Taco.description}}</li>
+						<li>${{Taco.number}}</li>
+						<li>{{Taco.ingredients.join(',  ')}}</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

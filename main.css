@@ -23,6 +23,40 @@
 	border-radius: 4px;
 }
 
+/*Content of Menu*/
+
 .menu {
 	color: #2B2B2B;
+	font-family: Verdana;
 }
+
+/*Left Column*/
+
+.left-column {
+	width: 50%;
+	color: black;
+	display: inline;
+	float: left;
+}
+
+.item-name {
+	text-align: center;
+	font-weight: 800;
+}
+
+.list {
+	list-style-type: none;
+	text-align: left;
+}
+
+/*Right Column*/
+
+.right-column {
+	display: inline;
+	float: right;
+	width: 50%;
+}
+
+
+
+

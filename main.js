@@ -1,10 +1,11 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('myController', ['$scope', function ($scope){
+myApp.controller('myController', ['$scope', function($scope){
 
 
-$scope.greeting = "bbbbb";
-console.log(greeting);
+$scope.greeting = "hello";
+
+// foodItems = Ingredients used in all Plates
 
 var foodItem = function(name, calories, vegan, glutenFree, citrusFree){
 
@@ -40,8 +41,45 @@ $scope.orange = new foodItem (
 		true,
 		true,
 		false
-
 	);
+
+$scope.chicken = new foodItem (
+
+		'Chicken',
+		25,
+		false,
+		true,
+		true
+	);
+
+$scope.beef = new foodItem (
+
+		'Beef',
+		35,
+		false,
+		true,
+		true
+	);
+
+$scope.pico = new foodItem (
+
+		'Pico de Gallo',
+		25,
+		true,
+		true,
+		false
+	);
+
+$scope.cheese = new foodItem (
+
+		'Cheese',
+		25,
+		false,
+		true,
+		false
+	);
+
+// Drink = Constructor function for drink items on Menu
 
 var Drink = function(name, description, number, ingredients){
 
@@ -60,6 +98,8 @@ $scope.bloodyMary = new Drink (
 
 	);
 
+// Plate = Constructor function for food items on menu
+
 var Plate = function(name, description, number, ingredients, isVegan){
 
 	this.name = name;
@@ -72,17 +112,19 @@ var Plate = function(name, description, number, ingredients, isVegan){
 $scope.Burrito = new Plate(
 
 	'Burrito',
-	'Big jug of Burrito Plate',
+	'Classic Burrito w/ Chips',
 	9,
-	[$scope.tomatoes, $scope.horseradish]
+	[$scope.chicken.name, $scope.beef.name, $scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
 	)
 
 $scope.Taco = new Plate(
 	'Tacos',
-	'Two Tacos',
+	'Two Tacos w/ Chips',
 	8,
-	[$scope.tomatoes]
+	[$scope.chicken.name, $scope.beef.name, $scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
 	)
+
+// Functions
 
 var Order = function(plates){
 	this.plates = plates;
