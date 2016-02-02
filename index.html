@@ -13,10 +13,13 @@
 </head>
 <body ng-controller="myController">
 	<div>
+
 		<img class="background-picture" src="restaurant2.jpg">
 		<div class="menu-container">
+
 			<div class="menu">
 				<H3>OG's Taco Shop</H3>
+
 				<div class="left-column">
 					<h4 class="item-name">{{Burrito.name}}</h4>
 					<ul class="list">
@@ -24,7 +27,9 @@
 						<li>${{Burrito.number}}</li>
 						<li>{{Burrito.ingredients.join(',  ')}}</li>
 					</ul>
+					<button ng-click="burritoToOrder()">Add to Order</button>
 				</div>
+
 				<div class="right-column">
 					<h4 class="item-name">{{Taco.name}}</h4>
 					<ul class="list">
@@ -32,9 +37,27 @@
 						<li>${{Taco.number}}</li>
 						<li>{{Taco.ingredients.join(',  ')}}</li>
 					</ul>
+					<button ng-click="tacoToOrder()">Add to Order</button>
 				</div>
 			</div>
 		</div>
+
+				<div class="order-box" ng-show="orderBox">
+					<h3>Choose Options</h3>
+					<form ng-model="orderForm">
+					<ul class="optionsList">
+						<li>{{order[0].description}}</li>
+						<li><input type="radio" name="meat" checked>{{order[0].ingredients[0]}}</input></li>
+						<li><input type="radio" name="meat">{{order[0].ingredients[1]}}</input></li>
+						<li><input type="checkbox">{{order[0].ingredients[2]}}</input></li>
+						<li><input type="checkbox">{{order[0].ingredients[3]}}</input></li>
+						<li><input type="checkbox">{{order[0].ingredients[4]}}</input></li>
+						<input type="number" value="1" min="1" max="5"></input>
+						<input ng-click="orderSubmit()" type="submit"></input>
+					</ul>
+					<form>
+				</div>
+
 	</div>
 
 

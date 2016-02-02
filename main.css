@@ -57,6 +57,27 @@
 	width: 50%;
 }
 
+button {
+	border: none;
+	background-color: #ecf0f1;
+	opacity: .9;
+}
 
+/*Order Box*/
+
+.order-box {
+	position: fixed;
+	background-color: white;
+	height: 300px;
+	width: 20%;
+	margin-left: 40%;
+	margin-top: 15%;
+	z-index: 2;
+}
+
+.optionsList {
+	list-style-type: none;
+	text-align: left;
+}
 
 

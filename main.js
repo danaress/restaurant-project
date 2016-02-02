@@ -3,7 +3,23 @@ var myApp = angular.module('myApp', []);
 myApp.controller('myController', ['$scope', function($scope){
 
 
-$scope.greeting = "hello";
+// $scope.orderBox = false;
+
+
+$scope.newOrder = []
+
+$scope.burritoToOrder = function(){
+	$scope.orderBox = true;
+	$scope.newOrder.push($scope.Burrito);
+	console.log($scope.newOrder);
+}
+
+$scope.test = []
+
+$scope.orderSubmit = function(){
+	$scope.test.push(orderForm)
+	console.log(test)
+}
 
 // foodItems = Ingredients used in all Plates
 
