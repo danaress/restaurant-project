@@ -75,6 +75,10 @@ button {
 	z-index: 2;
 }
 
+.order-box h3 {
+	text-align: center;
+}
+
 .optionsList {
 	list-style-type: none;
 	text-align: left;
