@@ -14,12 +14,14 @@ $scope.burritoToOrder = function(){
 	console.log($scope.newOrder);
 }
 
-$scope.test = []
+// Tring to push information from order form into a new array so I can display it as current order in another box I'm going to build on the right hand side of the page.
 
-$scope.orderSubmit = function(){
-	$scope.test.push(orderForm)
-	console.log(test)
-}
+// $scope.test = []
+
+// $scope.orderSubmit = function(){
+// 	$scope.test.push(orderForm)
+// 	console.log(test)
+// }
 
 // foodItems = Ingredients used in all Plates
 
