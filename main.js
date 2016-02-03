@@ -121,28 +121,32 @@ $scope.bloodyMary = new Drink (
 
 // Plate = Constructor function for food items on menu
 
-var Plate = function(name, description, number, ingredients, isVegan){
-
+var Plate = function(name, description, number, meat, toppings){
 	this.name = name;
 	this.description = description;
 	this.number = number;
-	this.ingredients = ingredients;
+	this.meat = meat;
+	this.toppings = toppings;
+	$scope.entrees.push(this)
+	console.log(this)
 	}
 
+$scope.entrees = []
 
 $scope.Burrito = new Plate(
-
 	'Burrito',
 	'Classic Burrito w/ Chips',
 	9,
-	[$scope.chicken.name, $scope.beef.name, $scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
+	[$scope.chicken.name, $scope.beef.name],
+	[$scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
 	)
 
 $scope.Taco = new Plate(
 	'Tacos',
 	'Two Tacos w/ Chips',
 	8,
-	[$scope.chicken.name, $scope.beef.name, $scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
+	[$scope.chicken.name, $scope.beef.name], 
+	[$scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
 	)
 
 // Functions

@@ -20,7 +20,18 @@
 			<div class="menu">
 				<H3>OG's Taco Shop</H3>
 
-				<div class="left-column">
+				<div ng-repeat="entrees in entrees"class="menu-items">
+					<h4>{{entrees.description}}</h4>
+					<ul class="list">
+						<li>Meat: {{entrees.meat.join(', ')}}</li>
+						<li>Toppings: {{entrees.toppings.join(', ')}}</li>
+						<li>${{entrees.number}}</li>
+					</ul>
+					<button ng-click="toggleAddToOrder()">Add to Order</button>
+				</div>
+
+
+				<!-- <div class="left-column">
 					<h4 class="item-name">{{Burrito.name}}</h4>
 					<ul class="list">
 						<li>{{Burrito.description}}</li>
@@ -30,7 +41,7 @@
 					<button ng-click="toggleAddToOrder()">Add to Order</button>
 				</div>
 
-				<div class="right-column">
+				<!-- <div class="right-column">
 					<h4 class="item-name">{{Taco.name}}</h4>
 					<ul class="list">
 						<li>{{Taco.description}}</li>
@@ -38,32 +49,34 @@
 						<li>{{Taco.ingredients.join(',  ')}}</li>
 					</ul>
 					<button ng-click="tacoToOrder">Add to Order</button>
-				</div>
+				</div> --> -->
 			</div>
 		</div>
 
-				<div class="order-box" ng-show="orderBox">
-					<h3>Choose Options</h3>
-					<form ng-model="orderForm">
-					<ul class="optionsList">
-						<li>{{order[0].description}}</li>
-						<button ng-click="toggleAddToOrder()">Close</button>
-						<li><input ng-model="orderItem.meat" value="Chicken" type="radio" name="meat">{{Burrito.ingredients[0]}}</input></li>
-						<li><input ng-model="orderItem.meat" value="Beef" type="radio" name="meat">{{Burrito.ingredients[1]}}</input></li>
-						<li><input ng-model="orderItem.ingredients.tomato" value="Tomato" type="checkbox">{{Burrito.ingredients[2]}}</input></li>
-						<li><input ng-model="orderItem.ingredients.cheese" value="Cheese" type="checkbox">{{Burrito.ingredients[3]}}</input></li>
-						<li><input ng-model="orderItem.ingredients.pico" value="Pico de Gallo" type="checkbox">{{Burrito.ingredients[4]}}</input></li>
-						<input ng-click="orderSubmit()" type="submit"></input>
-					</ul>
-					</form>
-				</div>
+		<div class="order-box" ng-show="orderBox">
+			<h3>Choose Options</h3>
+			<form ng-model="orderForm">
+			<ul class="optionsList">
+				<li>{{order[0].description}}</li>
+				<button ng-click="toggleAddToOrder()">Close</button>
+				<li><input ng-model="orderItem.meat" value="Chicken" type="radio" name="meat">{{Burrito.meat[0]}}</input></li>
+				<li><input ng-model="orderItem.meat" value="Beef" type="radio" name="meat">{{Burrito.meat[1]}}</input></li>
+				<li><input ng-model="orderItem.toppings['Tomato']" value="Tomato" type="checkbox">{{Burrito.toppings[0]}}</input></li>
+				<li><input ng-model="orderItem.toppings['Cheese']" value="Cheese" type="checkbox">{{Burrito.toppings[1]}}</input></li>
+				<li><input ng-model="orderItem.toppings['Pico De Gallo']" value="Pico de Gallo" type="checkbox">{{Burrito.toppings[2]}}</input></li>
+				<input ng-click="orderSubmit()" type="submit"></input>
+			</ul>
+			</form>
+		</div>
 
-				<div class="basket-box">
-					<div ng-repeat="basketItem in basket">
-						<h4>{{basketItem.meat}} burrito</h4>
-						<p ng-repeat="ingredients in basketItem.ingredients">{{ingredients.key}}</p>
-					</div>
-				</div>
+		<div class="basket-box">
+			<div ng-repeat="basketItem in basket">
+				<h4>{{basketItem.meat}} burrito</h4>
+				<ul>
+					<li ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</li>
+				</ul>
+			</div>
+		</div>
 
 	</div>
 
