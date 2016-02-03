@@ -3,23 +3,27 @@ var myApp = angular.module('myApp', []);
 myApp.controller('myController', ['$scope', function($scope){
 
 
-// $scope.orderBox = false;
+// $scope.burritoToOrder = function(){
+// 	$scope.orderBox = !$scope.orderBox;
+// 	$scope.newOrder.push($scope.Burrito);
+// 	console.log($scope.newOrder);
+// }
 
+	$scope.orderBox = false;
 
-$scope.newOrder = []
-
-$scope.burritoToOrder = function(){
-	$scope.orderBox = true;
-	$scope.newOrder.push($scope.Burrito);
-	console.log($scope.newOrder);
-}
+	$scope.toggleAddToOrder = function(){
+		$scope.orderBox = !$scope.orderBox
+	}
 
 // Tring to push information from order form into a new array so I can display it as current order in another box I'm going to build on the right hand side of the page.
 
-$scope.test = []
+	$scope.basket = []
 
-$scope.orderSubmit = function(){
-	console.log(orderForm);
+	$scope.orderSubmit = function(){
+		$scope.basket.push($scope.orderItem)
+		$scope.orderItem = {}
+		console.log($scope.basket);
+		$scope.toggleAddToOrder();
 }
 
 // foodItems = Ingredients used in all Plates

@@ -2,7 +2,7 @@
 <html ng-app="myApp">
 <head>
 	<title>Restaurant Objects</title>
-	<link rel="stylesheet" type"text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
 
 
@@ -27,7 +27,7 @@
 						<li>${{Burrito.number}}</li>
 						<li>{{Burrito.ingredients.join(',  ')}}</li>
 					</ul>
-					<button ng-click="burritoToOrder()">Add to Order</button>
+					<button ng-click="toggleAddToOrder()">Add to Order</button>
 				</div>
 
 				<div class="right-column">
@@ -37,7 +37,7 @@
 						<li>${{Taco.number}}</li>
 						<li>{{Taco.ingredients.join(',  ')}}</li>
 					</ul>
-					<button ng-click="tacoToOrder()">Add to Order</button>
+					<button ng-click="tacoToOrder">Add to Order</button>
 				</div>
 			</div>
 		</div>
@@ -47,15 +47,22 @@
 					<form ng-model="orderForm">
 					<ul class="optionsList">
 						<li>{{order[0].description}}</li>
-						<li><input type="radio" name="meat" checked>{{newOrder[0].ingredients[0]}}</input></li>
-						<li><input type="radio" name="meat">{{newOrder[0].ingredients[1]}}</input></li>
-						<li><input type="checkbox">{{newOrder[0].ingredients[2]}}</input></li>
-						<li><input type="checkbox">{{newOrder[0].ingredients[3]}}</input></li>
-						<li><input type="checkbox">{{newOrder[0].ingredients[4]}}</input></li>
-						<input type="number" value="1" min="1" max="5"></input>
+						<button ng-click="toggleAddToOrder()">Close</button>
+						<li><input ng-model="orderItem.meat" value="Chicken" type="radio" name="meat">{{Burrito.ingredients[0]}}</input></li>
+						<li><input ng-model="orderItem.meat" value="Beef" type="radio" name="meat">{{Burrito.ingredients[1]}}</input></li>
+						<li><input ng-model="orderItem.ingredients.tomato" value="Tomato" type="checkbox">{{Burrito.ingredients[2]}}</input></li>
+						<li><input ng-model="orderItem.ingredients.cheese" value="Cheese" type="checkbox">{{Burrito.ingredients[3]}}</input></li>
+						<li><input ng-model="orderItem.ingredients.pico" value="Pico de Gallo" type="checkbox">{{Burrito.ingredients[4]}}</input></li>
 						<input ng-click="orderSubmit()" type="submit"></input>
 					</ul>
 					</form>
+				</div>
+
+				<div class="basket-box">
+					<div ng-repeat="basketItem in basket">
+						<h4>{{basketItem.meat}} burrito</h4>
+						<p ng-repeat="ingredients in basketItem.ingredients">{{ingredients.key}}</p>
+					</div>
 				</div>
 
 	</div>
