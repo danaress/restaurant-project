@@ -15,8 +15,8 @@
 .menu-container{
 	position: absolute;
 	background-color: #ecf0f1;
-	z-index: 1;
-	height: 400px;
+	min-height: 420px;
+	height: auto;
 	width: 50%;
 	margin-left: 25%;
 	text-align: center;
@@ -31,6 +31,14 @@
 .menu {
 	color: #2B2B2B;
 	font-family: Verdana;
+}
+
+.OG {
+	margin-bottom: 25px;
+}
+
+.menu-items{
+	margin-bottom: 20px;
 }
 
 /*Left Column*/
@@ -50,6 +58,7 @@
 .list {
 	list-style-type: none;
 	text-align: left;
+	padding: 20;
 }
 
 /*Right Column*/
@@ -61,10 +70,16 @@
 }
 
 button {
-	border: none;
+	border: 1px silver solid;
+	border-radius: 4px;
 	background-color: #ecf0f1;
 	opacity: .9;
 }
+
+/*button:hover {
+	background-color: pink;
+	border: 1px solid pink;
+}*/
 
 /*Order Box*/
 
@@ -94,9 +109,12 @@ button {
 	height: auto;
 	width: 300px;
 	z-index: 2;
-	background-color: #F64747;
+	background-color: gold;
 	opacity: .8;
-	border: 4px #D91E18 solid;
+	border: 4px gold solid;
 	border-radius: 4px;
 }
 
+.checkout {
+
+}

@@ -20,12 +20,28 @@ myApp.controller('myController', ['$scope', function($scope){
 
 	$scope.basket = []
 	$scope.orderItem = {}
+	
+	$scope.total = 0
+
+	$scope.totalPrice = function(){
+		$scope.total = 0
+		for (var i=0; i < $scope.basket.length; i++) {
+			$scope.total += $scope.basket[i].price;
+		}
+			console.log($scope.total);
+			return $scope.total;
+	}
+
 
 	$scope.orderSubmit = function(){
+		$scope.orderItem.description = $scope.thisEntree.description
+		$scope.orderItem.price = $scope.thisEntree.number
 		$scope.basket.push($scope.orderItem)
 		console.log($scope.basket);
 		$scope.orderItem = {}
 		$scope.toggleAddToOrder();
+		$scope.totalPrice();
+		$scope.totalprice = true;
 }
 
 // foodItems = Ingredients used in all Plates
@@ -102,6 +118,15 @@ $scope.cheese = new foodItem (
 		false
 	);
 
+$scope.margarita = new foodItem (
+
+		'Margarita',
+		40,
+		true,
+		true,
+		false
+);
+
 // Drink = Constructor function for drink items on Menu
 
 var Drink = function(name, description, number, ingredients){
@@ -110,24 +135,28 @@ var Drink = function(name, description, number, ingredients){
 	this.description = description;
 	this.number = number;
 	this.ingredients = ingredients;
+	$scope.drinks.push(this)
+	console.log(this)
 }
 
-$scope.bloodyMary = new Drink (
+$scope.drinks = []
 
-	"Bloody Mary",
-	" Big jug of bloody mary. ",
+$scope.frozenMarg = new Drink (
+
+	"Frozen Marg",
+	"20oz Jar O' Frozen Marg",
 	10,
-	[$scope.orange.name, $scope.horseradish.name, $scope.tomatoes.name]
-
+	[$scope.margarita.name, $scope.orange.name]
 	);
 
 // Plate = Constructor function for food items on menu
 
-var Plate = function(name, description, number, meat, toppings){
+var Plate = function(name, description, number, meat, toppingsArray, toppings){
 	this.name = name;
 	this.description = description;
 	this.number = number;
 	this.meat = meat;
+	this.toppingsArray = toppingsArray;
 	this.toppings = toppings;
 	$scope.entrees.push(this)
 	console.log(this)
@@ -140,6 +169,7 @@ $scope.Burrito = new Plate(
 	'Classic Burrito w/ Chips',
 	9,
 	[$scope.chicken.name, $scope.beef.name],
+	[$scope.tomatoes.name, $scope.cheese.name, $scope.pico.name],
 	[{'Tomatoes' : $scope.tomatoes.name, 'Cheese' : $scope.cheese.name, 'Pico De Gallo' : $scope.pico.name}]
 	)
 
@@ -148,8 +178,10 @@ $scope.Taco = new Plate(
 	'Two Tacos w/ Chips',
 	8,
 	[$scope.chicken.name, $scope.beef.name], 
+	[$scope.tomatoes.name, $scope.cheese.name, $scope.pico.name],
 	[{'Tomatoes' : $scope.tomatoes.name, 'Cheese' : $scope.cheese.name, 'Pico De Gallo' : $scope.pico.name}]
 	)
+
 
 // Functions
 
@@ -177,7 +209,6 @@ var newRestaurant = new Restaurant(
 	"Marcus's Taco Shop",
 	"We don't have tacos, but we have burritos.",
 	newMenu
-
 	)
 
 var Customer = function(dietaryPreference){

@@ -5,6 +5,7 @@
 	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </head>
@@ -15,56 +16,27 @@
 		<div class="menu-container">
 
 			<div class="menu">
-				<H3>OG's Taco Shop</H3>
+				<H3 class="OG">OG's Taco Shop</H3>
 
 				<div ng-repeat="entree in entrees"class="menu-items">
 					<h4>{{entree.description}}</h4>
 					<ul class="list">
 						<li>Meat: {{entree.meat.join(', ')}}</li>
-						<li>Toppings: {{entree.toppings.join(', ')}}</li>
+						<li>Toppings: {{entree.toppingsArray.join(', ')}}</li>
 						<li>${{entree.number}}</li>
 					</ul>
 					<button ng-click="toggleAddToOrder(entree)">Add to Order</button>
 				</div>
-
-<!-- Old code below, might be useful -->
-				<!-- <div class="left-column">
-					<h4 class="item-name">{{Burrito.name}}</h4>
-					<ul class="list">
-						<li>{{Burrito.description}}</li>
-						<li>${{Burrito.number}}</li>
-						<li>{{Burrito.ingredients.join(',  ')}}</li>
-					</ul>
-					<button ng-click="toggleAddToOrder()">Add to Order</button>
+				<div ng-repeat="drink in drinks" class="menu-items">
+					<h4>{{drink.description}}</h4>
+				<ul class="list">
+					<li>{{drink.ingredients.join(', ')}}</li>
+					<li>${{drink.number}}</li>
+				 </ul>
+					<button ng-click="toggleAddToOrder(drink)">Add to Order</button>
 				</div>
-
-				<!-- <div class="right-column">
-					<h4 class="item-name">{{Taco.name}}</h4>
-					<ul class="list">
-						<li>{{Taco.description}}</li>
-						<li>${{Taco.number}}</li>
-						<li>{{Taco.ingredients.join(',  ')}}</li>
-					</ul>
-					<button ng-click="tacoToOrder">Add to Order</button>
-				</div> -->
 			</div>
 		</div>
-
-<!-- 		<div class="order-box" ng-show="orderBox">
-			<h3>Choose Options</h3>
-			<form ng-model="orderForm">
-			<ul class="optionsList">
-				<li>{{order[0].description}}</li>
-				<button ng-click="toggleAddToOrder()">Close</button>
-				<li><input ng-model="orderItem.meat" value="Chicken" type="radio" name="meat">{{Burrito.meat[0]}}</input></li>
-				<li><input ng-model="orderItem.meat" value="Beef" type="radio" name="meat">{{Burrito.meat[1]}}</input></li>
-				<li><input ng-model="orderItem.toppings['Tomato']" value="Tomato" type="checkbox">{{Burrito.toppings[0]}}</input></li>
-				<li><input ng-model="orderItem.toppings['Cheese']" value="Cheese" type="checkbox">{{Burrito.toppings[1]}}</input></li>
-				<li><input ng-model="orderItem.toppings['Pico De Gallo']" value="Pico de Gallo" type="checkbox">{{Burrito.toppings[2]}}</input></li>
-				<input ng-click="orderSubmit()" type="submit"></input>
-			</ul>
-			</form>
-		</div> -->
 
 
 		<div class="order-box" ng-show="orderBox">
@@ -73,10 +45,9 @@
 			<form>
 			<ul class="optionsList">
 				<button ng-click="toggleAddToOrder()">Close</button>
-				<!-- Need to find a way to make this show in the submit object -->
-				<h5 ng-model="orderItem.thisEntree.description" value="{{thisEntree.description}}">{{thisEntree.description}}</h5>
-				<li ng-repeat="meat in thisEntree.meat"><input type="radio" ng-model="orderItem.meat" value="{{meat}}" name="meat">{{meat}}</input></li>
-				<!-- Need to find a way to pass in unique keys to ingredients to get them to print out -->
+				<h5>{{thisEntree.description}}</h5>
+				<li><input type="hidden" ng-model="orderItem.thisEntree.description" value={{thisEntree.description}}></input></li>
+				<li ng-repeat="meat in thisEntree.meat"><input type="radio" ng-model="orderItem.meat" value="{{meat}}">{{meat}}</input></li>
 				<li ng-repeat="(keyToppings, valueToppings) in thisEntree.toppings[0]"><input ng-model="orderItem.toppings[keyToppings]" value="{{valueToppings}}" type="checkbox">{{valueToppings}}</input></li>
 				<input ng-click="orderSubmit()" type="submit"></input>
 			</ul>
@@ -88,12 +59,17 @@
 <!-- Getting out of the way until the order box is fixed -->
 		<div class="basket-box">
 			<div ng-repeat="basketItem in basket">
-				<h4>{{basketItem.meat}} burrito</h4>
-				<ul>
-					<li>{{basketItem.meat}}</li>
-					<li ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</li>
-				</ul>
+				<h4>{{basketItem.description}}</h4>
+				<h4>${{basketItem.price}}</h4>
+				
+					<div>{{basketItem.meat}}</div>
+					<div ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</div>
+
+
+				
 			</div>
+					<p ng-show="totalprice" class="totalPrice">Total Price: ${{total}} -- Straight Cash Homie</p>
+					<button class="checkout" ng-show="totalprice">Check Out</button>
 		</div>
 
 	</div>
