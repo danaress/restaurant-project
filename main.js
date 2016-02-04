@@ -14,17 +14,17 @@ myApp.controller('myController', ['$scope', function($scope){
 	$scope.toggleAddToOrder = function(entree){
 		$scope.orderBox = !$scope.orderBox
 		$scope.thisEntree = entree
-
 	}
 
 // Tring to push information from order form into a new array so I can display it as current order in another box I'm going to build on the right hand side of the page.
 
 	$scope.basket = []
+	$scope.orderItem = {}
 
 	$scope.orderSubmit = function(){
 		$scope.basket.push($scope.orderItem)
-		$scope.orderItem = {}
 		console.log($scope.basket);
+		$scope.orderItem = {}
 		$scope.toggleAddToOrder();
 }
 

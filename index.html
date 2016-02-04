@@ -2,13 +2,10 @@
 <html ng-app="myApp">
 <head>
 	<title>Restaurant Objects</title>
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
-
-
-
-
-
 	<script type="text/javascript" src="main.js"></script>
 </head>
 <body ng-controller="myController">
@@ -76,9 +73,11 @@
 			<form>
 			<ul class="optionsList">
 				<button ng-click="toggleAddToOrder()">Close</button>
-				<li>{{thisEntree.description}}</li>
-				<li ng-repeat="meat in thisEntree.meat"><input value="{{meat}}" type="radio" name="meat">{{meat}}</input></li>
-				<li><input type="checkbox"></input></li>
+				<!-- Need to find a way to make this show in the submit object -->
+				<h5 ng-model="orderItem.thisEntree.description" value="{{thisEntree.description}}">{{thisEntree.description}}</h5>
+				<li ng-repeat="meat in thisEntree.meat"><input type="radio" ng-model="orderItem.meat" value="{{meat}}" name="meat">{{meat}}</input></li>
+				<!-- Need to find a way to pass in unique keys to ingredients to get them to print out -->
+				<li ng-repeat="toppings in thisEntree.toppings"><input ng-model="orderItem.toppings[$index]" value="{{toppings}}" type="checkbox">{{toppings}}</input></li>
 				<input ng-click="orderSubmit()" type="submit"></input>
 			</ul>
 			</form>
@@ -87,14 +86,14 @@
 
 
 <!-- Getting out of the way until the order box is fixed -->
-<!-- 		<div class="basket-box">
+		<div class="basket-box">
 			<div ng-repeat="basketItem in basket">
 				<h4>{{basketItem.meat}} burrito</h4>
 				<ul>
 					<li ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</li>
 				</ul>
 			</div>
-		</div> -->
+		</div>
 
 	</div>
 
