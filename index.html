@@ -77,7 +77,7 @@
 				<h5 ng-model="orderItem.thisEntree.description" value="{{thisEntree.description}}">{{thisEntree.description}}</h5>
 				<li ng-repeat="meat in thisEntree.meat"><input type="radio" ng-model="orderItem.meat" value="{{meat}}" name="meat">{{meat}}</input></li>
 				<!-- Need to find a way to pass in unique keys to ingredients to get them to print out -->
-				<li ng-repeat="toppings in thisEntree.toppings"><input ng-model="orderItem.toppings[$index]" value="{{toppings}}" type="checkbox">{{toppings}}</input></li>
+				<li ng-repeat="(keyToppings, valueToppings) in thisEntree.toppings[0]"><input ng-model="orderItem.toppings[keyToppings]" value="{{valueToppings}}" type="checkbox">{{valueToppings}}</input></li>
 				<input ng-click="orderSubmit()" type="submit"></input>
 			</ul>
 			</form>
@@ -90,6 +90,7 @@
 			<div ng-repeat="basketItem in basket">
 				<h4>{{basketItem.meat}} burrito</h4>
 				<ul>
+					<li>{{basketItem.meat}}</li>
 					<li ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</li>
 				</ul>
 			</div>

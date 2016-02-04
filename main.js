@@ -140,7 +140,7 @@ $scope.Burrito = new Plate(
 	'Classic Burrito w/ Chips',
 	9,
 	[$scope.chicken.name, $scope.beef.name],
-	[$scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
+	[{'Tomatoes' : $scope.tomatoes.name, 'Cheese' : $scope.cheese.name, 'Pico De Gallo' : $scope.pico.name}]
 	)
 
 $scope.Taco = new Plate(
@@ -148,7 +148,7 @@ $scope.Taco = new Plate(
 	'Two Tacos w/ Chips',
 	8,
 	[$scope.chicken.name, $scope.beef.name], 
-	[$scope.tomatoes.name, $scope.cheese.name, $scope.pico.name]
+	[{'Tomatoes' : $scope.tomatoes.name, 'Cheese' : $scope.cheese.name, 'Pico De Gallo' : $scope.pico.name}]
 	)
 
 // Functions
@@ -224,7 +224,6 @@ var Customer = function(dietaryPreference){
 			}
 		}
 	}
-
 
 	Order.prototype.stringify = function(){
 
