@@ -20,17 +20,17 @@
 			<div class="menu">
 				<H3>OG's Taco Shop</H3>
 
-				<div ng-repeat="entrees in entrees"class="menu-items">
-					<h4>{{entrees.description}}</h4>
+				<div ng-repeat="entree in entrees"class="menu-items">
+					<h4>{{entree.description}}</h4>
 					<ul class="list">
-						<li>Meat: {{entrees.meat.join(', ')}}</li>
-						<li>Toppings: {{entrees.toppings.join(', ')}}</li>
-						<li>${{entrees.number}}</li>
+						<li>Meat: {{entree.meat.join(', ')}}</li>
+						<li>Toppings: {{entree.toppings.join(', ')}}</li>
+						<li>${{entree.number}}</li>
 					</ul>
-					<button ng-click="toggleAddToOrder()">Add to Order</button>
+					<button ng-click="toggleAddToOrder(entree)">Add to Order</button>
 				</div>
 
-
+<!-- Old code below, might be useful -->
 				<!-- <div class="left-column">
 					<h4 class="item-name">{{Burrito.name}}</h4>
 					<ul class="list">
@@ -49,11 +49,11 @@
 						<li>{{Taco.ingredients.join(',  ')}}</li>
 					</ul>
 					<button ng-click="tacoToOrder">Add to Order</button>
-				</div> --> -->
+				</div> -->
 			</div>
 		</div>
 
-		<div class="order-box" ng-show="orderBox">
+<!-- 		<div class="order-box" ng-show="orderBox">
 			<h3>Choose Options</h3>
 			<form ng-model="orderForm">
 			<ul class="optionsList">
@@ -67,16 +67,34 @@
 				<input ng-click="orderSubmit()" type="submit"></input>
 			</ul>
 			</form>
-		</div>
+		</div> -->
 
-		<div class="basket-box">
+
+		<div class="order-box" ng-show="orderBox">
+			<div>
+			<h3>Choose Options</h3>
+			<form>
+			<ul class="optionsList">
+				<button ng-click="toggleAddToOrder()">Close</button>
+				<li>{{thisEntree.description}}</li>
+				<li ng-repeat="meat in thisEntree.meat"><input value="{{meat}}" type="radio" name="meat">{{meat}}</input></li>
+				<li><input type="checkbox"></input></li>
+				<input ng-click="orderSubmit()" type="submit"></input>
+			</ul>
+			</form>
+			</div>
+		</div>		
+
+
+<!-- Getting out of the way until the order box is fixed -->
+<!-- 		<div class="basket-box">
 			<div ng-repeat="basketItem in basket">
 				<h4>{{basketItem.meat}} burrito</h4>
 				<ul>
 					<li ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 

@@ -11,8 +11,10 @@ myApp.controller('myController', ['$scope', function($scope){
 
 	$scope.orderBox = false;
 
-	$scope.toggleAddToOrder = function(){
+	$scope.toggleAddToOrder = function(entree){
 		$scope.orderBox = !$scope.orderBox
+		$scope.thisEntree = entree
+
 	}
 
 // Tring to push information from order form into a new array so I can display it as current order in another box I'm going to build on the right hand side of the page.
@@ -244,6 +246,6 @@ var Customer = function(dietaryPreference){
 		console.log(this.dietaryPreference);
 	}
 
-
+console.log($scope.entrees)
 
 }])
