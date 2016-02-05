@@ -5,6 +5,7 @@
 	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
 	<script type="text/javascript" src="main.js"></script>
@@ -25,7 +26,7 @@
 						<li>Toppings: {{entree.toppingsArray.join(', ')}}</li>
 						<li>${{entree.number}}</li>
 					</ul>
-					<button ng-click="toggleAddToOrder(entree)">Add to Order</button>
+					<button ng-click="toggleAddToOrder(entree)" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add to Order</button>
 				</div>
 				<div ng-repeat="drink in drinks" class="menu-items">
 					<h4>{{drink.description}}</h4>
@@ -33,45 +34,51 @@
 					<li>{{drink.ingredients.join(', ')}}</li>
 					<li>${{drink.number}}</li>
 				 </ul>
-					<button ng-click="toggleAddToOrder(drink)">Add to Order</button>
+					<button ng-click="toggleAddToOrder(drink)" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add to Order</button>
 				</div>
 			</div>
 		</div>
 
+<!-- Modal -->
 
-		<div class="order-box" ng-show="orderBox">
-			<div>
-			<h3>Choose Options</h3>
-			<form>
-			<ul class="optionsList">
-				<button ng-click="toggleAddToOrder()">Close</button>
-				<h5>{{thisEntree.description}}</h5>
-				<li><input type="hidden" ng-model="orderItem.thisEntree.description" value={{thisEntree.description}}></input></li>
-				<li ng-repeat="meat in thisEntree.meat"><input type="radio" ng-model="orderItem.meat" value="{{meat}}">{{meat}}</input></li>
-				<li ng-repeat="(keyToppings, valueToppings) in thisEntree.toppings[0]"><input ng-model="orderItem.toppings[keyToppings]" value="{{valueToppings}}" type="checkbox">{{valueToppings}}</input></li>
-				<input ng-click="orderSubmit()" type="submit"></input>
-			</ul>
-			</form>
-			</div>
-		</div>		
+	<div id="myModal" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
 
+    <!-- Modal content-->
+    	<div class="order-box" ng-show="orderBox">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal">&times;</button>
+        			<h4 class="modal-title">Choose Options</h4>
+        		</div>
+     		<div class="modal-body">
+				<form>
+					<ul class="optionsList">
+					<h5>{{thisEntree.description}}</h5>
+					<li><input type="hidden" ng-model="orderItem.thisEntree.description" value={{thisEntree.description}}></input></li>
+					<li ng-repeat="meat in thisEntree.meat"><input type="radio" ng-model="orderItem.meat" value="{{meat}}">{{meat}}</input></li>
+					<li ng-repeat="(keyToppings, valueToppings) in thisEntree.toppings[0]"><input ng-model="orderItem.toppings[keyToppings]" value="{{valueToppings}}" type="checkbox">{{valueToppings}}</input></li>
+					</ul>
+				</form>
+ 			</div>
+    		<div class="modal-footer">
+    			<button type="button" ng-click="orderSubmit()" type="submit" class="btn btn-default" data-dismiss="modal">Submit</button>
+    		</div>
+    	</div>
+		</div>
+		</div>
+		</div>
 
-<!-- Getting out of the way until the order box is fixed -->
 		<div class="basket-box">
 			<div ng-repeat="basketItem in basket">
 				<h4>{{basketItem.description}}</h4>
-				<h4>${{basketItem.price}}</h4>
-				
+				<h4>${{basketItem.price}}</h4>	
 					<div>{{basketItem.meat}}</div>
 					<div ng-repeat="(toppings, truthy) in basketItem.toppings">{{toppings}}</div>
-
-
-				
 			</div>
 					<p ng-show="totalprice" class="totalPrice">Total Price: ${{total}} -- Straight Cash Homie</p>
-					<button class="checkout" ng-show="totalprice">Check Out</button>
+					<button class="checkout btn btn-default" ng-show="totalprice">Check Out</button>
 		</div>
-
 	</div>
 
 

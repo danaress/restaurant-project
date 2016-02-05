@@ -9,10 +9,10 @@ myApp.controller('myController', ['$scope', function($scope){
 // 	console.log($scope.newOrder);
 // }
 
-	$scope.orderBox = false;
+	$scope.orderBox = true;
 
 	$scope.toggleAddToOrder = function(entree){
-		$scope.orderBox = !$scope.orderBox
+		// $scope.orderBox = !$scope.orderBox
 		$scope.thisEntree = entree
 	}
 
@@ -183,98 +183,98 @@ $scope.Taco = new Plate(
 	)
 
 
-// Functions
+// // Functions
 
-var Order = function(plates){
-	this.plates = plates;
-}
+// var Order = function(plates){
+// 	this.plates = plates;
+// }
 
-var Menu = function(plates){
-	this.plates = plates;
-}
+// var Menu = function(plates){
+// 	this.plates = plates;
+// }
 
-var newMenu = new Menu (
-	[$scope.Burrito, $scope.bloodyMary]
-	)
+// var newMenu = new Menu (
+// 	[$scope.Burrito, $scope.bloodyMary]
+// 	)
 
-var Restaurant = function(name, description, menu){
+// var Restaurant = function(name, description, menu){
 
-	this.name = name;
-	this.description = description;
-	this.menu = menu;
-}
+// 	this.name = name;
+// 	this.description = description;
+// 	this.menu = menu;
+// }
 
-var newRestaurant = new Restaurant(
+// var newRestaurant = new Restaurant(
 
-	"Marcus's Taco Shop",
-	"We don't have tacos, but we have burritos.",
-	newMenu
-	)
+// 	"Marcus's Taco Shop",
+// 	"We don't have tacos, but we have burritos.",
+// 	newMenu
+// 	)
 
-var Customer = function(dietaryPreference){
+// var Customer = function(dietaryPreference){
 
-	this.dietaryPreference = dietaryPreference;
-}
+// 	this.dietaryPreference = dietaryPreference;
+// }
 
 
-	foodItem.prototype.stringify = function(){
+// 	foodItem.prototype.stringify = function(){
 
-		console.log(this.name + ' ' + this.calories + ' calories,' + (this.vegan ? " this is vegan. " : "poop") + (this.glutenFree ? "this is gluten free. " : '') + (this.citrusFree ? "this is citrus free. " : ''));
-	}
+// 		console.log(this.name + ' ' + this.calories + ' calories,' + (this.vegan ? " this is vegan. " : "poop") + (this.glutenFree ? "this is gluten free. " : '') + (this.citrusFree ? "this is citrus free. " : ''));
+// 	}
 
-	Drink.prototype.stringify = function(){
+// 	Drink.prototype.stringify = function(){
 
-		console.log(this.name + this.description + '$' + this.number + ' ' + this.ingredients.join(', '));
-	}
+// 		console.log(this.name + this.description + '$' + this.number + ' ' + this.ingredients.join(', '));
+// 	}
 
-	Plate.prototype.stringify = function(){
+// 	Plate.prototype.stringify = function(){
 
-		console.log(this.name + this.description + '$' + this.number + ' ' + this.ingredients.join(', '));
-	}
+// 		console.log(this.name + this.description + '$' + this.number + ' ' + this.ingredients.join(', '));
+// 	}
 
-	Plate.prototype.isVegan = function(){
-		for (var i=0; i<this.ingredients.length; i++){
-			if (this.ingredients[i].vegan === false){
-				console.log("This is not vegan");
-			}
-		}
-	}
+// 	Plate.prototype.isVegan = function(){
+// 		for (var i=0; i<this.ingredients.length; i++){
+// 			if (this.ingredients[i].vegan === false){
+// 				console.log("This is not vegan");
+// 			}
+// 		}
+// 	}
 
-	Plate.prototype.isGlutenFree = function(){
-		for (var i=0; i<this.ingredients.length; i++){
-			if (this.ingredients[i].glutenFree === false){
-				console.log("This is not gluten free");
-			}
-		}
-	}
+// 	Plate.prototype.isGlutenFree = function(){
+// 		for (var i=0; i<this.ingredients.length; i++){
+// 			if (this.ingredients[i].glutenFree === false){
+// 				console.log("This is not gluten free");
+// 			}
+// 		}
+// 	}
 
-	Plate.prototype.isCitrusFree = function(){
-		for (var i=0; i<this.ingredients.length; i++){
-			if (this.ingredients[i].citrusFree === false){
-				console.log("This is not Citrus Free");
-			}
-		}
-	}
+// 	Plate.prototype.isCitrusFree = function(){
+// 		for (var i=0; i<this.ingredients.length; i++){
+// 			if (this.ingredients[i].citrusFree === false){
+// 				console.log("This is not Citrus Free");
+// 			}
+// 		}
+// 	}
 
-	Order.prototype.stringify = function(){
+// 	Order.prototype.stringify = function(){
 
-		console.log(this.plates.join(', '));
-	}
+// 		console.log(this.plates.join(', '));
+// 	}
 
-	Menu.prototype.stringify = function(){
+// 	Menu.prototype.stringify = function(){
 
-		console.log(this.plates.join(', '));
-	}
+// 		console.log(this.plates.join(', '));
+// 	}
 
-	Restaurant.prototype.stringify = function(){
+// 	Restaurant.prototype.stringify = function(){
 
-		console.log(this.name + this.description + this.menu.join());
-	}
+// 		console.log(this.name + this.description + this.menu.join());
+// 	}
 
-	Customer.prototype.stringify = function(){
+// 	Customer.prototype.stringify = function(){
 
-		console.log(this.dietaryPreference);
-	}
+// 		console.log(this.dietaryPreference);
+// 	}
 
 console.log($scope.entrees)
 

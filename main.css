@@ -83,7 +83,7 @@ button {
 
 /*Order Box*/
 
-.order-box {
+/*.order-box {
 	position: fixed;
 	background-color: white;
 	height: 300px;
@@ -95,6 +95,10 @@ button {
 
 .order-box h3 {
 	text-align: center;
+}*/
+
+#myModal {
+
 }
 
 .optionsList {
@@ -109,9 +113,9 @@ button {
 	height: auto;
 	width: 300px;
 	z-index: 2;
-	background-color: gold;
+	background-color: #5bc0de;
 	opacity: .8;
-	border: 4px gold solid;
+	border: 4px #5bc0de solid;
 	border-radius: 4px;
 }
 
